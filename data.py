@@ -33,7 +33,6 @@ def filter_by_feature(data, feature, values):
         wanted[key] = list()
         trash[key] = list()
 
-
     for key in data.keys():
         n = len(data[feature])
         if key == feature:
@@ -76,8 +75,15 @@ def print_details(data, features, statistic_functions):
         print(i + ":", round(num_mean, 2), round(num_stdv, 2))
 
 
-
 def print_joint_details(data, features, statistic_functions, statistic_functions_names):
+    """
+    prints statistic data on the dictionary data on the two lists under the keys in features
+    :param data: dictionary of given data
+    :param features: list of two features from the data set
+    :param statistic_functions: a list of statistic functions from statistics.py
+    :param statistic_functions_names: names of function for printing
+    :return:
+    """
     for func in statistic_functions:
-        print(f"{statistic_functions_names}" + "(" + f"{features[0]}" + ", " + f"{features[1]}" + "): "
+        print("Cov" + "(" + f"{features[0]}" + ", " + f"{features[1]}" + "): "
               + str(round(func(data[features[0]], data[features[1]]), 2)))

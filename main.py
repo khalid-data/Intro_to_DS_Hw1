@@ -1,6 +1,7 @@
-from statistics import calc_mean, calc_stdv, calc_covariance
+from statistics import calc_mean, calc_stdv, calc_covariance, population_statistics
 import sys
 from data import load_data, filter_by_feature, print_details, print_joint_details
+
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -34,6 +35,21 @@ def main(argv):
     statistic_functions = [calc_mean, calc_stdv]
     print_details(dictionary, features_for_printing, statistic_functions)
     print_joint_details(dictionary, ['t1', 'cnt'], [calc_covariance], "calc_covariance")
+
+    # Question 2:
+    print("Question 2:")
+
+    # extract winter holiday and weekday  records
+    winter_data = filter_by_feature(dictionary, 'season', {3})[0]
+    winter_holiday_data, winter_weekday_data = filter_by_feature(winter_data, 'is_holiday', {1})
+
+    print("If t1<=13.0, then:")
+    population_statistics("Winter Holiday records:", winter_holiday_data, 't1', 'cnt', 13, False, statistic_functions)
+    population_statistics("Winter Weekday records:", winter_weekday_data, 't1', 'cnt', 13, False, statistic_functions)
+
+    print("If t1>13.0, then:")
+    population_statistics("Winter Holiday records:", winter_holiday_data, 't1', 'cnt', 13, True, statistic_functions)
+    population_statistics("Winter Weekday records:", winter_weekday_data, 't1', 'cnt', 13, True, statistic_functions)
 
 
 # Press the green button in the gutter to run the script.
