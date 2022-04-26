@@ -37,6 +37,7 @@ def main(argv):
     print_joint_details(dictionary, ['t1', 'cnt'], [calc_covariance], "calc_covariance")
 
     # Question 2:
+    print("")
     print("Question 2:")
 
     # extract winter holiday and weekday  records

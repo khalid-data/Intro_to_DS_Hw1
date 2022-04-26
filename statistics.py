@@ -65,7 +65,7 @@ def population_statistics(feature_description, data, treatment, target, threshol
     :param statistic_functions: a list of statistic functions from statistics.py
     :return:none
     """
-    print(feature_description + ":")
+    print(feature_description)
     above_data = dict()
     under_data = dict()
     for key in data.keys():
@@ -82,9 +82,10 @@ def population_statistics(feature_description, data, treatment, target, threshol
     if is_above:
         num_mean = (statistic_functions[0](above_data[target]))
         num_stdv = (statistic_functions[1](above_data[target]))
-        print("cnt" + ":", round(num_mean, 2), round(num_stdv, 2))
+        print("cnt" + ": " + str("%.2f" % round(num_mean, 2)) + ", " + str("%.2f" % round(num_stdv, 2)))
 
     else:
         num_mean = (statistic_functions[0](under_data[target]))
         num_stdv = (statistic_functions[1](under_data[target]))
-        print("cnt" + ":", round(num_mean, 2), round(num_stdv, 2))
+        print("cnt" + ": " + str(r"%.2f" % round(num_mean, 2)) + ", " + str("%.2f" % round(num_stdv, 2)))
+

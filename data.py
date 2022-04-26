@@ -72,9 +72,11 @@ def print_details(data, features, statistic_functions):
     for i in features:
         num_mean = (statistic_functions[0](data[i]))
         num_stdv = (statistic_functions[1](data[i]))
-        print(i + ":", round(num_mean, 2), round(num_stdv, 2))
+        print(i + ": " + str("%.2f" % round(num_mean, 2)) + ", " + str("%.2f" % round(num_stdv, 2)))
 
 
+"""
+print(i + ": " + str("%.2f" % round(num_mean, 2)) + ", " + str("%.2f" % round(num_stdv, 2)))"""
 def print_joint_details(data, features, statistic_functions, statistic_functions_names):
     """
     prints statistic data on the dictionary data on the two lists under the keys in features
@@ -86,4 +88,4 @@ def print_joint_details(data, features, statistic_functions, statistic_functions
     """
     for func in statistic_functions:
         print("Cov" + "(" + f"{features[0]}" + ", " + f"{features[1]}" + "): "
-              + str(round(func(data[features[0]], data[features[1]]), 2)))
+              + str("%.2f" % round(func(data[features[0]], data[features[1]]), 2)))
